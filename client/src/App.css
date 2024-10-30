@@ -1,0 +1,115 @@
+/* Full-page background image */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('bg.webp'); /* Replace with the actual path to your image */
+  background-size: cover; /* Ensures the image covers the whole page */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  min-height: 100vh; /* Full viewport height */
+}
+/* Grid for Tic Tac Toe board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.15); /* Lower opacity for blend effect */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border to subtly define board */
+}
+
+/* Styling for each cell (button) */
+.cell {
+  width: 100px;
+  height: 100px;
+  font-size: 36px;
+  text-align: center;
+  vertical-align: middle;
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Lighter border for blend */
+  background-color: rgba(240, 240, 240, 0.7); /* Slight transparency */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.cell:hover {
+  background-color: rgba(224, 224, 224, 0.8); /* Slightly darker on hover */
+}
+
+/* Styling for Join Game and Create Game buttons */
+.button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black to blend with background */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and click effects */
+  margin: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Subtle text shadow for readability */
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+}
+
+.button:active {
+  transform: scale(0.98); /* Slightly shrink on click for feedback */
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background to blend */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  transition: background-color 0.3s ease, border 0.3s ease;
+  text-align: center; /* Center text inside input */
+  width: 200px;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Light placeholder text */
+}
+
+.search-input:focus {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Align elements vertically */
+  align-items: center; /* Center-align items */
+  gap: 15px; /* Space between elements */
+  margin-top: 20px;
+}
+
+h1, h3 {
+  font-family: 'Rubik Wet Paint', cursive;
+  font-size: 2.5em; /* Adjust size as needed */
+  color: rgba(85, 44, 44, 0.429); /* Customize color to match your theme */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Optional: adds a subtle shadow */
+}
+
+h2 {
+  font-family: 'Atma', cursive;
+  font-size: 1.8em; /* Adjust size as needed */
+  color:  rgba(105, 83, 83, 0.429); /* Customize color for contrast */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Optional shadow */
+}
+
