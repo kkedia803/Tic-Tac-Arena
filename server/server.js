@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
         socket.to(gameId).emit('playerJoined', player);
     });
 
-    socket.on('gameEnded', ({ gameId, draw }) => {
+    socket.on('gameEnded', ({ gameId, draw, winner }) => {
         if (draw) {
             io.to(gameId).emit('gameDraw');
         } else {

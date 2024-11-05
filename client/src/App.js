@@ -22,24 +22,23 @@ function App() {
       setCurrentPlayer(currentPlayer);
     });
 
-    // socket.on('gameEnded', () => {
-    //   alert('Game ended. Resetting the game...');
-    //   resetGame();
-    // });
-
     socket.on('gameDraw', () => {
-      alert("It's a draw!"); // Notify both players
-      resetGame(); // Reset the game after the notification
+      toast.info("It's a draw!"); // Notify both players
+      setTimeout(()=>{
+        resetGame();
+      }, 2000); // Reset the game after the notification
     });
 
-    socket.on('resetGame', () => {
-      resetGame();
+    socket.on('gameWon', ({ winner }) => {
+      toast.success(`Player ${winner} won the Game`); // Notify both players
+      setTimeout(() => {
+        resetGame();
+      }, 2000);
     });
+
 
     return () => {
       socket.off('updateBoard');
-      socket.off('gameEnded');
-      socket.off('resetGame');
     };
 
   }, []);
@@ -99,16 +98,10 @@ function App() {
       const winner = checkWinner(newBoard);
 
       if (winner) {
-        toast.success(`Player ${winner} wins!`); // Notify the winner
-        // setTimeout(resetGame, 2000);
-        // socket.emit('gameEnded',{gameId});
 
         socket.emit('gameEnded', { gameId, draw: false, winner });
 
       } else if (newBoard.every(cell => cell)) {
-        toast.info("It's a draw!"); // Check for a draw
-        // setTimeout(resetGame, 2000);
-        // socket.emit('gameEnded', {gameId});
 
         socket.emit('gameEnded', { gameId, draw: true });
       } else {
@@ -119,7 +112,7 @@ function App() {
 
   return (
     <div className='App'>
-      <ToastContainer position='top-center' />
+      <ToastContainer position='top-center' autoClose={3000} />
       <div className='w3-display-middle button-container'>
         {!gameId && (
           <>
