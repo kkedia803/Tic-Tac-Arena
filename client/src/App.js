@@ -79,6 +79,13 @@ function App() {
     setGameId(null); // Reset the game ID to null
   };
 
+  const copyText = () => {
+    const cop = document.getElementById('gameId');
+    navigator.clipboard.writeText(`Use this Id to play TIC-TAC-TOE with me !!! ${cop.innerText}`)
+
+    toast.success('Game Id copied to clipboard!');
+  }
+
   const handleJoinGame = (id) => {
     setGameId(id);
     setMyPlayer('O');
@@ -96,7 +103,7 @@ function App() {
         // setTimeout(resetGame, 2000);
         // socket.emit('gameEnded',{gameId});
 
-        socket.emit('gameEnded', { gameId, draw: false, winner }); 
+        socket.emit('gameEnded', { gameId, draw: false, winner });
 
       } else if (newBoard.every(cell => cell)) {
         toast.info("It's a draw!"); // Check for a draw
@@ -112,7 +119,7 @@ function App() {
 
   return (
     <div className='App'>
-      <ToastContainer position='top-center'/>
+      <ToastContainer position='top-center' />
       <div className='w3-display-middle button-container'>
         {!gameId && (
           <>
@@ -124,7 +131,10 @@ function App() {
 
         {gameId && (
           <>
-            <h2>Game ID : {gameId}</h2>
+            <div className='shareBox'>
+              <h2 id='gameId'>Game ID : {gameId}</h2>
+              <button onClick={copyText} className='w3-large w3-center button'>Share Id</button>
+            </div>
             <h3>Current Player:{currentPlayer}</h3>
             <Board board={board} handleClick={handleClick} />
           </>
