@@ -25,7 +25,7 @@ A live, real-time two-player Tic Tac Toe game built with React and Socket.io. Ch
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/Tic-Tac-Arena.git
+    git clone https://github.com/kkedia803/Tic-Tac-Arena.git
     cd tic-tac-arena
     ```
 
